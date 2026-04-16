@@ -1,28 +1,26 @@
 # Mira
 
-Mira is a voice-activated AI assistant that pays attention so you don't have to. It listens passively across your devices, understands the context of your conversations, and takes action — scheduling meetings, sending messages, drafting emails, and setting reminders — all from natural speech, without you ever touching a keyboard.
+Mira runs quietly in the background and pays attention to your conversations — understanding context, remembering what was said, and taking action when something needs to get done.
 
 ---
 
-## How it works
+## The idea
 
-Most AI assistants are stateless. You ask a question, get an answer, and the context disappears. Mira is different: every conversation is transcribed, attributed to the right speaker, and stored in an episodic memory that persists across sessions. When you ask a follow-up hours or days later, Mira retrieves the relevant context through a RAG pipeline that combines semantic search with keyword matching — so answers are grounded in what was actually said, not hallucinated from scratch.
+Most AI assistants require you to stop what you're doing, phrase a command, and wait for a response. Mira works the other way around. It listens passively across your devices, builds an episodic memory of your conversations over time, and surfaces actions automatically — scheduling a meeting you mentioned, drafting an email you said you'd send, or setting a reminder you nearly forgot.
 
-Natural language processing runs continuously in the background, extracting plans, commitments, and intentions from your conversations as they happen. When Mira detects something actionable, it surfaces it and acts on it.
+You keep talking. Mira keeps up.
 
 ---
 
-## What Mira can do
+## What it does
 
-**Remember who said what** — Mira identifies individual speakers through voice recognition and ties every interaction to the right person, so your conversation history is always accurate and attributable.
+**Remembers your conversations** — every session is transcribed, attributed to the right speaker, and stored. The context doesn't disappear when the conversation ends. Ask Mira what was decided last week, who committed to something, or what time a plan was made — and it will tell you, grounded in what was actually said through a RAG pipeline that combines semantic and keyword search across your history.
 
-**Take action from speech** — say you want to grab lunch on Friday, follow up with someone, or be reminded about a deadline. Mira parses the intent and turns it into a calendar event, a text, or an email — no explicit commands required.
+**Knows who's in the room** — Mira identifies individual speakers through voice recognition and ties everything to the right person, so your history is always accurate and attributable.
 
-**Connect to your tools** — Mira integrates with Google Calendar to schedule events directly, and can send messages and emails on your behalf using context it has already gathered from the conversation.
+**Acts on what it hears** — when a plan, commitment, or intention surfaces in conversation, Mira parses it and follows through: creating calendar events in Google Calendar, sending texts, drafting emails, and setting reminders — without you needing to ask explicitly.
 
-**Answer questions about past conversations** — ask Mira what was decided in last week's discussion, who said they'd handle something, or what time something was planned for. The episodic memory and RAG pipeline surface the right answer from your actual history.
-
-**Run across multiple devices** — open a client on your laptop and your desktop simultaneously. Mira evaluates audio quality in real time and uses the clearest feed, so the experience is seamless regardless of which machine you're closest to.
+**Works across your devices** — run the client on multiple machines simultaneously. Mira evaluates audio quality in real time and uses the clearest feed, so nothing is missed regardless of where you are in the room.
 
 ---
 
