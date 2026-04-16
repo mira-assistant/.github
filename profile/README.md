@@ -1,205 +1,35 @@
-# Mira Assistant
+# Mira
 
-Mira is a sophisticated AI-powered personal assistant that combines real-time voice interaction, custom-trained language models, and a modern desktop interface. Built with a focus on privacy, performance, and extensibility, Mira represents a complete end-to-end solution for voice-based AI interaction.
+Mira is a voice-activated AI assistant that pays attention so you don't have to. It listens passively across your devices, understands the context of your conversations, and takes action — scheduling meetings, sending messages, drafting emails, and setting reminders — all from natural speech, without you ever touching a keyboard.
 
-## 🌟 Key Features
+---
 
-- **Real-time Voice Interaction**: Powered by Whisper Live technology for instant speech-to-text conversion
-- **Custom-trained AI Models**: Two specialized language models fine-tuned for specific tasks
-- **Cross-platform Desktop Client**: Modern Electron-based interface for macOS and Windows
-- **Secure Network Architecture**: Private deployment using Tailscale for device connectivity
-- **Extensible Backend**: FastAPI-based Python backend with modular architecture
-- **Comprehensive Testing**: 67+ tests across all components
+## How it works
 
-## 🧠 AI Models
+Most AI assistants are stateless. You ask a question, get an answer, and the context disappears. Mira is different: every conversation is transcribed, attributed to the right speaker, and stored in an episodic memory that persists across sessions. When you ask a follow-up hours or days later, Mira retrieves the relevant context through a RAG pipeline that combines semantic search with keyword matching — so answers are grounded in what was actually said, not hallucinated from scratch.
 
-### 1. Command Processing Model (LLaMA-2-7B-Chat)
-- Fine-tuned version of LLaMA-2-7B-Chat optimized for:
-  - Natural language command interpretation
-  - Wake word response handling
-  - Function calling and system control
-- Utilizes LoRA (Low-Rank Adaptation) for efficient training
-- Optimized for real-time response generation
+Natural language processing runs continuously in the background, extracting plans, commitments, and intentions from your conversations as they happen. When Mira detects something actionable, it surfaces it and acts on it.
 
-### 2. Data Extraction Model (Falcon-40B-Instruct)
-- Custom-tuned version of TII UAE Falcon-40B-Instruct for:
-  - Structured data extraction from speech
-  - Contact information parsing
-  - Calendar event recognition
-  - Task and reminder extraction
-- Enhanced with task-specific prompts and examples
-- Optimized for accuracy in entity extraction
+---
 
-## 🔧 Technical Architecture
+## What Mira can do
 
-### Backend (Python/FastAPI)
-- **Core Components**:
-  - FastAPI application server
-  - SQLite database with SQLAlchemy ORM
-  - Custom ML model manager
-  - Real-time audio processing pipeline
-  
-- **API Routes**:
-  ```
-  /interactions
-  ├── POST /register          # Register new voice interactions
-  ├── GET /{id}              # Retrieve specific interactions
-  ├── POST /{id}/inference   # Run inference on interaction
-  └── DELETE /{id}           # Remove interaction
-  
-  /conversations
-  └── GET /all               # Retrieve conversation history
-  
-  /persons
-  └── [Person management endpoints]
-  
-  /services
-  └── [System service endpoints]
-  
-  /streams
-  └── [Real-time stream management]
-  ```
+**Remember who said what** — Mira identifies individual speakers through voice recognition and ties every interaction to the right person, so your conversation history is always accurate and attributable.
 
-### Desktop Client (Electron/Node.js)
-- Modern UI with intuitive design
-- Real-time voice capture and streaming
-- Secure IPC bridge architecture
-- Professional animations and visual feedback
-- Keyboard shortcuts for efficiency
+**Take action from speech** — say you want to grab lunch on Friday, follow up with someone, or be reminded about a deadline. Mira parses the intent and turns it into a calendar event, a text, or an email — no explicit commands required.
 
-## 🚀 Installation
+**Connect to your tools** — Mira integrates with Google Calendar to schedule events directly, and can send messages and emails on your behalf using context it has already gathered from the conversation.
 
-### Backend Setup
-```bash
-# Clone the repository
-git clone https://github.com/your-org/mira-assistant.git
-cd mira-assistant/backend
+**Answer questions about past conversations** — ask Mira what was decided in last week's discussion, who said they'd handle something, or what time something was planned for. The episodic memory and RAG pipeline surface the right answer from your actual history.
 
-# Create and activate virtual environment
-python -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+**Run across multiple devices** — open a client on your laptop and your desktop simultaneously. Mira evaluates audio quality in real time and uses the clearest feed, so the experience is seamless regardless of which machine you're closest to.
 
-# Install dependencies
-pip install -r requirements.txt
+---
 
-# Start the server
-python mira.py
-```
+## Repositories
 
-### Desktop Client Setup
-```bash
-# Navigate to desktop client
-cd ../desktop-client
-
-# Install dependencies
-npm install
-
-# Start the application
-npm start
-
-# For development mode
-npm run start-dev
-```
-
-## 🔒 Secure Deployment with Tailscale
-
-Mira uses Tailscale for secure, private networking between devices:
-
-1. **Network Setup**:
-   - Install Tailscale on all devices
-   - Create a private Tailscale network
-   - Configure subnet routing for local services
-
-2. **Backend Configuration**:
-   - Deploy backend on primary device
-   - Expose backend port through Tailscale network
-   - Configure client to use Tailscale IP
-
-3. **Client Configuration**:
-   - Update `baseUrl` in client config to use Tailscale IP
-   - Enable secure WebSocket connections
-   - Maintain end-to-end encryption
-
-## 🧪 Testing
-
-```bash
-# Backend Tests
-cd backend
-python -m pytest tests/
-
-# Desktop Client Tests
-cd desktop-client
-npm test
-```
-
-## 🛠 Development
-
-### Model Fine-tuning
-```bash
-cd backend/tuning
-
-# Generate training datasets
-python acquire_datasets.py --task both --output-dir datasets/
-
-# Fine-tune models
-python fine_tune_models.py --model llama-2-7b-chat-hf-function-calling-v3
-python fine_tune_models.py --model tiiuae-falcon-40b-instruct
-```
-
-### Building for Distribution
-```bash
-cd desktop-client
-
-# Build for macOS
-npm run build-mac
-
-# Build for Windows
-npm run build-win
-
-# Build for all platforms
-npm run build
-```
-
-## 📚 Technical Stack
-
-- **Backend**:
-  - Python 3.8+
-  - FastAPI
-  - SQLAlchemy
-  - PyTorch
-  - Transformers
-  - Whisper Live
-
-- **Frontend**:
-  - Electron
-  - Node.js
-  - Modern JavaScript (ES6+)
-  - HTML5/CSS3
-  - Web Audio API
-
-- **ML/AI**:
-  - LLaMA-2-7B-Chat
-  - Falcon-40B-Instruct
-  - LoRA fine-tuning
-  - Custom training pipelines
-
-- **Deployment**:
-  - Tailscale
-  - SQLite
-  - LM Studio
-  - Electron Builder
-
-## 🤝 Contributing
-
-Contributions are welcome! Please read our [Contributing Guidelines](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- The LLaMA team at Meta AI Research
-- The Falcon team at Technology Innovation Institute
-- The Whisper team at OpenAI
-- The Tailscale team for their excellent networking solution
+| Repo | Description |
+|---|---|
+| [`backend`](https://github.com/mira-assistant/backend) | Core service — audio processing, speaker diarization, episodic memory, RAG pipeline, action execution |
+| [`desktop-app`](https://github.com/mira-assistant/desktop-app) | Native client for macOS, Windows, and Linux |
+| [`web`](https://github.com/mira-assistant/web) | Browser-based client — same experience, no install required |
