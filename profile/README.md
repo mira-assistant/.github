@@ -28,6 +28,5 @@ You keep talking. Dadei keeps up.
 
 | Repo | Description |
 |---|---|
-| [`backend`](https://github.com/Dadei-assistant/backend) | Core service — audio processing, speaker diarization, episodic memory, RAG pipeline, action execution |
-| [`desktop-app`](https://github.com/Dadei-assistant/desktop-app) | Native client for macOS, Windows, and Linux |
-| [`web`](https://github.com/Dadei-assistant/web) | Browser-based client — same experience, no install required |
+| [`backend`](https://github.com/dadei-app/backend) | Core service — audio processing, speaker diarization, episodic memory, RAG pipeline, action execution |
+| [`frontend`](https://github.com/dadei-app/frontend) | Browser-based client & Native desktop client for macOS, Windows, and Linux |
